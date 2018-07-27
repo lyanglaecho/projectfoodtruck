@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.foodtruck.mapper.reviewmapper">
+
+	<!-- 게시판 리스트 : select -->
+	<select id="list" resultType="ReviewDTO">
+		select * from(
+			select rownum rnum,rno,festloc,content,festdate,fname,maindish,starscore,score,hit,id from (
+				select rno,festloc,festdate,concat(substr(content,1,25),'.......') content,fname,fmemberboard.maindish,starscore,score,reviewboard.hit,
+					replace(reviewboard.id, substr(reviewboard.id,1,3),'***') id from (reviewboard left outer join fest on reviewboard.festno = fest.FESTNO)
+					 left outer join fmemberboard on FMEMBERBOARD.FNO=reviewboard.fno 
+				<include refid="search"></include>
+				order by rno desc
+			)
+		)
+		where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 게시판 글보기 : select =>view, update form -->
+<!-- 	<select id="view" resultType="org.zerock.board.dto.BoardDTO"> -->
+	<select id="view" resultType="reviewDTO">
+		select rno,score,re.hit hit,re.id id,fname,fm.maindish maindish,festloc,content,writedate,festdate,starscore
+		from (reviewboard re left outer join fest on re.festno = fest.FESTNO)  left outer join fmemberboard fm on FM.FNO=re.fno 
+		where rno = #{rno}
+	</select>
+	
+	<!-- 게시판 글보기 1증가 : update -->
+	<update id="increase">
+		update reviewboard set hit = hit + 1 where rno = #{rno}
+	</update>
+	
+	<!-- 게시판 글쓰기 : insert -->
+	<insert id="insert">
+		insert into reviewboard(rno,starscore, content,id,score)
+		values(reviewboard_seq.nextval, #{starscore},#{content},#{id},#{score})
+	</insert>
+	
+	<!-- 게시판 글수정 처리 : update -->
+	<update id="update">
+		update reviewboard set content=#{content},starscore=#{starscore},
+		score=#{score} where rno = #{rno}
+	</update>
+	
+	<!-- 게시판 글삭제 처리 : delete -->
+	<delete id="delete">
+		delete from reviewboard where rno = #{rno}
+	</delete>
+	
+	<!-- 전체 데이터의 갯수를 세는 처리 -->
+	<select id="totalCount" resultType="Integer">
+		select count(*) from reviewboard
+		where rno > 0
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 검색을 위한 조건 처리문 : list, totalCount에서 각각 사용한다. -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and ( title like '%' || #{keyword} || '%' )
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and ( content like '%' || #{keyword} || '%' )
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and ( writer like '%' || #{keyword} || '%' )
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( title like '%' || #{keyword} || '%'
+				or content like '%' || #{keyword} || '%' )
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( content like '%' || #{keyword} || '%'
+				or writer like '%' || #{keyword} || '%' )
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( title like '%' || #{keyword} || '%'
+				or content like '%' || #{keyword} || '%'
+				or writer like '%' || #{keyword} || '%' )
+			</if>
+		</if>
+	</sql>
+	
+	
+	
+</mapper>
