@@ -21,7 +21,7 @@ public class NoticeController {
 	public String list(Model model, Criteria cri) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeList()");
-		model.addAttribute("list", service.list());
+		model.addAttribute("list", service.list(cri));
 		model.addAttribute("cri", cri);
 		
 		return "notice/List";
