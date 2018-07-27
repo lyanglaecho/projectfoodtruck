@@ -4,7 +4,6 @@
 
 <!DOCTYPE html>
 <html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -91,7 +90,7 @@
 			<tbody>
 				<tr>
 					<th style="margin-left: 10px; font-size: 20px;">&emsp;회사명</th>
-					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray "readonly="readonly"></textarea>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray "readonly="readonly">${dto.fname }</textarea>
 					<select>						
 					<c:forEach items="${list }" var="reviewDTO">
 					<option value="${dto.fname }">--회사명--</option>
@@ -102,19 +101,19 @@
 					</tr><tr>
 					
 					<th style="margin-left: 10px; font-size: 20px;">&emsp;행사장소</th>
-					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray" readonly="readonly"></textarea></td>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray" readonly="readonly">${dto.festloc }</textarea></td>
 					</tr><tr>
 					
 					<th style="margin-left: 10px; font-size: 20px;">&emsp;주요메뉴</th>
-					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray"readonly="readonly"></textarea></td>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray"readonly="readonly">${dto.maindish }</textarea></td>
 					</tr><tr>
 					
 					<th style="margin-left: 10px; font-size: 20px;">&emsp;행사날짜</th>
-					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray"readonly="readonly"></textarea></td>
+					<td><textarea rows="1" cols="20" name="content" style="border-color: purple; background-color: gray"readonly="readonly">${dto.festdate }</textarea></td>
 					</tr><tr>
 					
 					<th style="margin-left: 10px; font-size: 20px;">&emsp;리뷰내용</th>
-					<td><textarea rows="10" cols="40" name="content" style="border-color: purple;"></textarea></td>
+					<td><textarea rows="10" cols="40" name="content" style="border-color: purple;">${dto.content }</textarea></td>
 				<tr />
 			</tbody>
 			</table>

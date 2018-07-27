@@ -31,7 +31,7 @@ public class ReviewController {
 	// 리스트 - DB에서 데이터를 꺼내와서 JSP로 Model객체에 데이터를 담아서 넘긴다.forward
 	@RequestMapping(value = "/review/reviewlist.do", method = RequestMethod.GET)
 	public String list(Model model, Criteria cri) {
-		System.out.println(getClass().getSimpleName()+".reviewlist()");
+//		System.out.println(getClass().getSimpleName()+".reviewlist()");
 //		System.out.println(cri);
 	    model.addAttribute("list", service.list(cri));
 	    // jsp에서 하단부분 페이지 표시할때 cri 객체가 필요하다. model에 담아서 보낸다.
@@ -44,9 +44,8 @@ public class ReviewController {
 	// view.do?no=10
 	@RequestMapping(value = "/review/reviewview.do", method = RequestMethod.GET)
 	public String view(Model model, int rno) {
-		System.out.println(getClass().getSimpleName()+".reviewview()");
+//		System.out.println(getClass().getSimpleName()+".reviewview()");
 		model.addAttribute("dto", service.view(rno, true));
-		System.out.println(model);
 		// prefix + return String + suffix
 		// /WEB-INF/views/review/view.jsp
 		return "review/reviewview";
@@ -55,7 +54,7 @@ public class ReviewController {
 	// 글쓰기 폼 -> servlet-context.xml에 view-controller tag로 지정
 	@RequestMapping(value = "/review/reviewwrite.do", method = RequestMethod.GET)
 	public String write() {
-		System.out.println(getClass().getSimpleName()+".reviewwrite():GET");
+//		System.out.println(getClass().getSimpleName()+".reviewwrite():GET");
 		// prefix + return String + suffix
 		// /WEB-INF/views/review/list.jsp
 		return "review/reviewwrite";
@@ -66,11 +65,8 @@ public class ReviewController {
 	// -> RedirectAttributes.flash속성을 이용한다.
 	@RequestMapping(value = "/review/reviewwrite.do", method = RequestMethod.POST)
 	public String write(ReviewDTO reviewDTO, RedirectAttributes rttr) {
-		System.out.println(getClass().getSimpleName()+".reviewwrite():POST");
-		System.out.println(reviewDTO);
+//		System.out.println(getClass().getSimpleName()+".reviewwrite():POST");
 		service.insert(reviewDTO);
-		System.out.println(reviewDTO);
-		System.out.println(reviewDTO);
 		// 딱 한번만 적용되고 다음에는 없어지는 속성 저장
 		rttr.addFlashAttribute("msg", "writeOK");
 		// prefix + return String + suffix
@@ -81,7 +77,7 @@ public class ReviewController {
 	// 글수정 폼 - DB에서 글번호에 맞는 데이터를 불러와서 사용자에게 보여준다. -> JSP
 	@RequestMapping(value = "/review/reviewupdate.do", method = RequestMethod.GET)
 	public String update(Model model, int rno) {
-		System.out.println(getClass().getSimpleName()+".reviewupdate():GET");
+//		System.out.println(getClass().getSimpleName()+".reviewupdate():GET");
 		model.addAttribute("dto", service.view(rno, false));
 		// prefix + return String + suffix
 		// /WEB-INF/views/review/update.jsp
@@ -91,30 +87,19 @@ public class ReviewController {
 	// 글수정 처리 - 수정한 제목, 내용, 작성자를 글번호와 함께 DAO에 보내서 DB에 저장한다.
 	@RequestMapping(value = "/review/reviewupdate.do", method = RequestMethod.POST)
 	public String update(ReviewDTO reviewDTO, RedirectAttributes rttr) {
-		System.out.println(getClass().getSimpleName()+".reviewwrite():POST");
+//		System.out.println(getClass().getSimpleName()+".reviewwrite():POST");
 		service.update(reviewDTO);
-		System.out.println(reviewDTO);
-		System.out.println(reviewDTO);
-		System.out.println(reviewDTO);
-		System.out.println(reviewDTO);
-		System.out.println(reviewDTO);
-		System.out.println(reviewDTO);
 		// 딱 한번만 적용되고 다음에는 없어지는 속성 저장
 		rttr.addFlashAttribute("msg", "updateOK");
 		// prefix + return String + suffix
 		// /WEB-INF/views/review/list.jsp
-		System.out.println(reviewDTO.getRno());
-		System.out.println(reviewDTO.getRno());
-		System.out.println(reviewDTO.getRno());
-		System.out.println(reviewDTO.getRno());
-		System.out.println(reviewDTO.getRno());
 		return "redirect:reviewview.do?rno="+reviewDTO.getRno();
 	}
 	
 	// 글삭제 처리 - 삭제할 글번호를 받아서 DB에서 글번호에 맞는 데이터를 삭제한다.
 	@RequestMapping(value = "/review/reviewdelete.do", method = RequestMethod.GET)
 	public String delete(int rno, RedirectAttributes rttr) {
-		System.out.println(getClass().getSimpleName()+".reviewdelete()");
+//		System.out.println(getClass().getSimpleName()+".reviewdelete()");
 		service.delete(rno);
 		// 딱 한번만 적용되고 다음에는 없어지는 속성 저장
 		rttr.addFlashAttribute("msg", "deleteOK");

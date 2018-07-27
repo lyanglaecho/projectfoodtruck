@@ -55,8 +55,7 @@ public class Criteria {
 		// 1. totalPage를 구한다.
 		// (1-1)/10 -> 0 +1 => 1 , (10-1)/10 -> 1 +1 -> 1
 		totalPage = (totalCount-1) / perPageNum + 1;
-		System.out.println(getClass().getSimpleName()
-				+".calcData().totalPage="+totalPage);
+//		System.out.println(getClass().getSimpleName()	+".calcData().totalPage="+totalPage);
 		// 2. startPage, endPage를 구한다.
 		startPage = (page-1) / displayPageNum * displayPageNum +1;
 		endPage = startPage + displayPageNum - 1;

@@ -13,7 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
-.1,#1 {border: 10px solid red;}
+/* th{border: 10px solid red;} */
   
   
   </style>
@@ -54,7 +54,7 @@
 			<tbody>
 				<!-- 데이터를 출력한다. -->
 				<tr>
-					<th>번호</th>
+					<th class="1">번호</th>
 					<td id="td_rno">${dto.rno}</td>
 				</tr>
 				<tr>
@@ -62,36 +62,36 @@
 					<td>${dto.id}</td>
 				</tr>
 				<tr>
-					<th>조회수</th>
+					<th class="1">조회수</th>
 					<td>${dto.hit}</td>
 				</tr>
 				<tr>
-					<th>회사명</th>
+					<th class="1">회사명</th>
 					<td>${dto.fname}</td>
 				</tr>
 				<tr>
-					<th>주요메뉴</th>
+					<th class="1">주요메뉴</th>
 					<td>${dto.maindish}</td>
 				</tr>
 				<tr>
-					<th>행사장소</th>
+					<th class="1">행사장소</th>
 					<td>${dto.festloc}</td>
 				</tr>
 				<tr>
-					<th>행사날짜</th>
+					<th class="1">행사날짜</th>
 					<td>${dto.festdate}</td>
 				</tr>
 				
 				<tr>
-					<th>평점</th>
+					<th class="1">평점</th>
 					<td>${dto.score}</td>
 				<tr />
 				<tr>
-					<th>별점</th>
+					<th class="1">별점</th>
 					<td style="color: red; font-size: 25px;">${dto.starscore}</td>
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th class="1">내용</th>
 					<td>${dto.content}</td>
 				</tr>
 			</tbody><tr></tr>

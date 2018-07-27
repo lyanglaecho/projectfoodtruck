@@ -7,7 +7,6 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -25,34 +24,12 @@
 		// 버튼 이벤트 처리
 		$("#cancel").click(function() {
 			window.close();
+			setTimeout('window.close()', 2000);
 			
 		});
 		$("#save").click(function() {
 			//window.opener.location.reload();
-			//window.close();
-			$.ajax({
-            url:"URL",
-            type:"post",
-            data:regi_data,
-            
-            success : function(data){
-            
-                alert("등록 되었음");
-                //부모창 리플래쉬(ajax를 사용하였기때문)
-                opener.parent.location.reload();
-                //자식창 닫아주기
-                window.close();
-                
-                
-            },//success
-            
-            error:function(jqXHR, textStatus, errorThrown){
-                alert("등록오류.");
-            }//error
-            
-            
-            
-        });//ajax
+// 			window.close();
 		});
 		
 	});
