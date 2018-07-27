@@ -1,4 +1,4 @@
-package com.foodtruck.notice.controller;
+package com.foodtruck.notice.service;
 
 import java.util.List;
 
