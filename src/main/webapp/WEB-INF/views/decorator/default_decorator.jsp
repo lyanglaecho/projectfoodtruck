@@ -170,7 +170,7 @@ font-weight: bolder;
 			              	</ul>
 			            	</li>
 				
-						<li><a href="${absUri }/notice/noticeList.do">공지사항</a></li>
+						<li><a href="${absUri }/notice/list.do">공지사항</a></li>
 						<li class="dropdown">
 			              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                	데이터 분석
