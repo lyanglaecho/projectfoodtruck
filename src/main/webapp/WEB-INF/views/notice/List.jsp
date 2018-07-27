@@ -28,13 +28,13 @@ $(document).ready(function(){
         var no = $(this).find("td:first").text();
 // 		alert("click");
 // 		alert(no);
-		location = "noticeView.do?no="+no
+		location = "view.do?no="+no
 				+"&page=${pageObject.page}"
 				+'&rowPerPage=${(empty param.rowPerPage)?"10":param.rowPerPage}'
 				+'&searchKey=${param.searchKey}&searchWord=${param.searchWord}';
     });
     $("#write").click(function(){
-    	location = "noticeWrite.do";
+    	location = "write.do";
     });
 });
 </script>

@@ -17,7 +17,7 @@
 			history.go(-1);
 		});
 		$("#reload").click(function(){
-		    location = "noticeUpdate.do";
+		    location = "update.do";
 		});
 	});
 </script>

@@ -5,13 +5,13 @@
 <mapper namespace="com.foodtruck.mapper.NoticeMapper">
 
 	<!-- 게시판 리스트 : select -->
-	<select id="list" resultType="com.foodtruck.member.dto.NoticeDTO">
+	<select id="list" resultType="com.foodtruck.notice.dto.NoticeDTO">
 		select *
 		from(
-			select rownum rnum, no, title, writer, writeDate, hit
+			select rownum rnum, no, title, id, writeDate, hit
 			from (
-				select no, title, writer, writeDate, hit
-				from board
+				select no, title, id, writeDate, hit
+				from noticeboard
 				where no > 0
 				<include refid="search"></include>
 				order by no desc
@@ -21,41 +21,41 @@
 	</select>
 	
 	<!-- 게시판 글보기 : select =>view, update form -->
-<!-- 	<select id="view" resultType="org.zerock.board.dto.BoardDTO"> -->
-	<select id="view" resultType="com.foodtruck.member.dto.NoticeDTO">
-		select no, title, content, writer, writeDate, hit
-		from board
+<!-- 	<select id="view" resultType="org.zerock.noticeboard.dto.noticeboardDTO"> -->
+	<select id="view" resultType="com.foodtruck.notice.dto.NoticeDTO">
+		select no, title, content, id, writeDate, hit
+		from noticeboard
 		where no = #{no}
 	</select>
 	
 	<!-- 게시판 글보기 1증가 : update -->
 	<update id="increase">
-		update board set hit = hit + 1
+		update noticeboard set hit = hit + 1
 		where no = #{no}
 	</update>
 	
 	<!-- 게시판 글쓰기 : insert -->
 	<insert id="insert">
-		insert into board(no, title, content, writer)
-		values(board_seq.nextval, #{title}, #{content}, #{writer})
+		insert into noticeboard(no, title, content, id)
+		values(noticeboard_seq.nextval, #{title}, #{content}, #{id})
 	</insert>
 	
 	<!-- 게시판 글수정 처리 : update -->
 	<update id="update">
-		update board 
-		set title = #{title}, content = #{content},	writer = #{writer}
+		update noticeboard 
+		set title = #{title}, content = #{content},	id = #{id}
 		where no = #{no}
 	</update>
 	
 	<!-- 게시판 글삭제 처리 : delete -->
 	<delete id="delete">
-		delete from board
+		delete from noticeboard
 		where no = #{no}
 	</delete>
 	
 	<!-- 전체 데이터의 갯수를 세는 처리 -->
 	<select id="totalCount" resultType="Integer">
-		select count(*) from board
+		select count(*) from noticeboard
 		where no > 0
 		<include refid="search"></include>
 	</select>
@@ -70,7 +70,7 @@
 				and ( content like '%' || #{keyword} || '%' )
 			</if>
 			<if test="searchType == 'w'.toString()">
-				and ( writer like '%' || #{keyword} || '%' )
+				and ( id like '%' || #{keyword} || '%' )
 			</if>
 			<if test="searchType == 'tc'.toString()">
 				and ( title like '%' || #{keyword} || '%'
@@ -78,12 +78,12 @@
 			</if>
 			<if test="searchType == 'cw'.toString()">
 				and ( content like '%' || #{keyword} || '%'
-				or writer like '%' || #{keyword} || '%' )
+				or id like '%' || #{keyword} || '%' )
 			</if>
 			<if test="searchType == 'tcw'.toString()">
 				and ( title like '%' || #{keyword} || '%'
 				or content like '%' || #{keyword} || '%'
-				or writer like '%' || #{keyword} || '%' )
+				or id like '%' || #{keyword} || '%' )
 			</if>
 		</if>
 	</sql>

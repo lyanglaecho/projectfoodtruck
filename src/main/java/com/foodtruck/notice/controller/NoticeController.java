@@ -17,7 +17,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	
-	@RequestMapping(value = "/noticeList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String list(Model model, Criteria cri) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeList()");
@@ -27,7 +27,7 @@ public class NoticeController {
 		return "notice/List";
 	}// end of list();
 	
-	@RequestMapping(value = "/noticeWrite.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/write.do", method = RequestMethod.GET)
 	public String write(Model model) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeWrite():GET");
@@ -35,17 +35,17 @@ public class NoticeController {
 		return "notice/Write";
 	}// end of write():GET;
 	
-	@RequestMapping(value = "/noticeWrite.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/write.do", method = RequestMethod.POST)
 	public String write(NoticeDTO noticeDTO) {
 		
 		System.out.println(getClass().getSimpleName()+".Noticewrite():POST");
 		System.out.println(noticeDTO);
 		service.insert(noticeDTO);
 
-		return "redirect:noticeList.do"; // 처리가 다 끝나면 리스트로 자동 이동시킨다.
+		return "redirect:list.do"; // 처리가 다 끝나면 리스트로 자동 이동시킨다.
 	}// end of write():POST;
 	
-	@RequestMapping(value = "/noticeView.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/view.do", method = RequestMethod.GET)
 	public String view(Model model, int no) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeView()");
@@ -54,7 +54,7 @@ public class NoticeController {
 		return "notice/View";
 	}// end of view();
 	
-	@RequestMapping(value = "/noticeUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/update.do", method = RequestMethod.GET)
 	public String update(Model model, int no) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeUpdate():GET");
@@ -64,7 +64,7 @@ public class NoticeController {
 	}// end of update():GET;
 	
 	// 글수정 처리 - 수정한 제목, 내용, 작성자를 글번호와 함께 DAO에 보내서 DB에 저장한다.
-	@RequestMapping(value = "/noticeUpdate.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
 	public String update(NoticeDTO noticeDTO) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeUpdate():POST");
@@ -73,13 +73,13 @@ public class NoticeController {
 		return "redirect:view.do?no="+noticeDTO.getNo();
 	}// end of update():POST;
 	
-	@RequestMapping(value = "/noticeList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
 	public String delete(Model model, int no) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeDelete()");
 		service.delete(no);
 		
-		return "notice/Delete";
+		return "redirect:list.do";
 	}// end of delete();
 	
 	

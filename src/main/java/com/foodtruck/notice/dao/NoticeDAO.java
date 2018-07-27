@@ -1,14 +1,16 @@
-package com.foodtruck.notice.service;
+package com.foodtruck.notice.dao;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.Criteria;
 
+@Repository
 public class NoticeDAO {
 	
 	@Inject
@@ -55,5 +57,10 @@ public class NoticeDAO {
 		
 		sqlSession.delete(local+"delete", no);
 	}// end of delete();
+
+	public void increase(int no) {
+		System.out.println(getClass().getSimpleName()+".increase()");
+		sqlSession.update(local+"increase", no);
+	}
 
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.foodtruck.notice.dao.NoticeDAO;
 import com.foodtruck.notice.dto.NoticeDTO;
 import com.foodtruck.util.Criteria;
 
@@ -26,6 +27,7 @@ public class NoticeService {
 
 	public NoticeDTO view(int no) {
 		System.out.println(getClass().getSimpleName()+".view()");
+		dao.increase(no);
 		return dao.view(no);
 	}// end of view();
 
