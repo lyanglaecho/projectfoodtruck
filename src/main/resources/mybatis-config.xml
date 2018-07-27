@@ -5,8 +5,8 @@
 
 <typeAliases >
 	<typeAlias alias="memberDTO" type="com.foodtruck.member.dto.MemberDTO"/>
+	<typeAlias alias="reviewDTO" type="com.foodtruck.review.dto.ReviewDTO"/>
 	<package name="com.foodtruck.member.dto"/>
-	<package name="com.foodtruck.notice.dto"/>
 <!-- 	<package name="org.zerock.qna.dto"/> -->
 </typeAliases>
 </configuration>

@@ -28,7 +28,7 @@ public class ReviewDAO {
 		System.out.println(cri);
 		System.out.println(cri);
 		return sqlSession.selectList
-				("org.zerock.mapper.reviewmapper.list", cri);
+				("com.foodtruck.mapper.reviewmapper.list", cri);
 	}
 
 	// 게시판 글보기, 글 수정 폼 - 글번호가 필요하다. 파라메터로 전달 받는다.
@@ -41,7 +41,7 @@ public class ReviewDAO {
 		System.out.println(rno);
 		System.out.println(rno);
 		return sqlSession.selectOne
-		("org.zerock.mapper.reviewmapper.view", rno);
+		("com.foodtruck.mapper.reviewmapper.view", rno);
 	}
 	
 	// 게시판 글쓰기 
@@ -49,7 +49,7 @@ public class ReviewDAO {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getSimpleName()+".insert()");
 		sqlSession.insert
-		("org.zerock.mapper.reviewmapper.insert", ReviewDTO);
+		("com.foodtruck.mapper.reviewmapper.insert", ReviewDTO);
 	}
 	
 	// 게시판 글수정 처리
@@ -61,7 +61,7 @@ public class ReviewDAO {
 		System.out.println(ReviewDTO);
 		System.out.println(ReviewDTO);
 		sqlSession.update
-		("org.zerock.mapper.reviewmapper.update", ReviewDTO);
+		("com.foodtruck.mapper.reviewmapper.update", ReviewDTO);
 	}
 	
 	// 게시판 글보기 1 증가 처리
@@ -69,7 +69,7 @@ public class ReviewDAO {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getSimpleName()+".increase()");
 		sqlSession.update
-		("org.zerock.mapper.reviewmapper.increase", rno);
+		("com.foodtruck.mapper.reviewmapper.increase", rno);
 	}
 	
 	// 게시판 글삭제 - 글번호를 받아서 처리
@@ -77,7 +77,7 @@ public class ReviewDAO {
 		// TODO Auto-generated method stub
 		System.out.println(getClass().getSimpleName()+".delete()");
 		sqlSession.delete
-		("org.zerock.mapper.reviewmapper.delete", rno);
+		("com.foodtruck.mapper.reviewmapper.delete", rno);
 	}
 
 	// 게시판 전체 글의 갯수 구하는 메서드
@@ -94,7 +94,7 @@ public class ReviewDAO {
 		System.out.println(cri);
 		System.out.println(cri);
 		return sqlSession.selectOne
-		("org.zerock.mapper.reviewmapper.totalCount", cri);
+		("com.foodtruck.mapper.reviewmapper.totalCount", cri);
 	}
 	
 }
