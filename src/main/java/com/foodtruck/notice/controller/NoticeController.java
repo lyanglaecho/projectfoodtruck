@@ -49,7 +49,8 @@ public class NoticeController {
 	public String view(Model model, int no) {
 		
 		System.out.println(getClass().getSimpleName()+".NoticeView()");
-		model.addAttribute("dto", service.view(no));
+		model.addAttribute("noticeDTO", service.view(no));
+		System.out.println(service.view(no));
 		
 		return "notice/View";
 	}// end of view();
