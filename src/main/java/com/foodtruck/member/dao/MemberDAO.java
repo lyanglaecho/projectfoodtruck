@@ -29,4 +29,9 @@ public class MemberDAO {
 		System.out.println(getClass().getSimpleName()+".join()");
 		sqlsession.insert(namespace+"insert", memberdto);
 	}
+
+	public MemberDTO view(String id) {
+		System.out.println(getClass().getSimpleName()+".view()");
+		return sqlsession.selectOne(namespace+"view", id);
+	}
 }

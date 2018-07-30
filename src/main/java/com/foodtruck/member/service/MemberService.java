@@ -22,4 +22,9 @@ public class MemberService {
 		dao.join(memberdto);
 	}
 
+	public MemberDTO view(String id) {
+		System.out.println(getClass().getSimpleName()+".view()");
+		return (MemberDTO) dao.view(id);
+	}
+
 }

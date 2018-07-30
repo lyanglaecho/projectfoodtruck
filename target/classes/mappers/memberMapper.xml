@@ -19,6 +19,12 @@
 		#{address}, #{add2},  sysdate, sysdate, 1, #{email})
 	</select>
 	
+	<!-- 회원 정보 보기 : view -->
+	<select id="view" resultType="memberDTO">
+		select id, name, birthDate, mobile, address, add2, email
+		from memberboard where id = #{id}
+	</select>
+	
 	
 	
 	

@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,13 +34,13 @@ public class MemberController {
 	// 3. 로그인 처리
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw) {
-		MemberDTO dto = service.login(id, pw);
-		if(dto == null) {
+		MemberDTO memberDTO = service.login(id, pw);
+		if(memberDTO == null) {
 			System.out.println("아이디나 비밀번호를 확인하세요.");
 			return "member/login.do";
 		}
 		// 아이디와 비밀번호가 맞는 경우
-		session.setAttribute("id", dto); // 로그인 처리 -> 세션에 값을 넣는다.
+		session.setAttribute("login", memberDTO); // 로그인 처리 -> 세션에 값을 넣는다.
 		return "redirect:/main/main.do";
 	}
 	
@@ -59,6 +60,23 @@ public class MemberController {
 		return "redirect:/main/main.do";
 	}
 	
+	// 6. 회원정보 보기 폼
+	@RequestMapping(value="/view.do", method=RequestMethod.GET)
+	public String view(HttpSession session, String id, MemberDTO memberDTO) {
+		System.out.println(getClass().getSimpleName()+".view():GET");
+		System.out.println(id);
+		System.out.println(session.getAttribute(id));
+		session.setAttribute("id", service.view(id));
+		
+		return "/member/view.do";
+		
+	}
 	
+	// 7. 회원정보 수정 처리
+	@RequestMapping(value="/view.do", method=RequestMethod.POST)
+	public String update() {
+		return null;
+		
+	}
 	
 }
