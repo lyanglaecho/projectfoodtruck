@@ -57,21 +57,21 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
-// 수정일을 위한 함수
-   $(document).ready(function() {
-   function getDate()
-   {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
-    today = yyyy+""+mm+""+dd;
+// // 수정일을 위한 함수
+//    $(document).ready(function() {
+//    function getDate()
+//    {
+//     var today = new Date();
+//     var dd = today.getDate();
+//     var mm = today.getMonth()+1; //January is 0!
+//     var yyyy = today.getFullYear();
+//     if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+//     today = yyyy+""+mm+""+dd;
 
-    document.getElementById("todayDate").value = today;
-}
-getDate();
-   });
+//     document.getElementById("todayDate").value = today;
+// }
+// getDate();
+//    });
    //업데이트form을 숨긴다.
    $(document).ready(function() {
       //       alert("OK");
@@ -187,10 +187,73 @@ $(document).ready(function() {
             </button>
             
          </div>
-       </div>
+       
          
          
-     
+      </div>
+<!--      탈퇴하기 -->
+
+</form>
+<form action="">
+<div class="form-group" align="right">        
+          <a href="../member/changepw.do" class="btn btn-info" >
+          <span class="glyphicon glyphicon-lock"  ></span> 비밀번호 변경</a>
+</div>          
+</form> 		
+ <form id="withdraw.do" method="post" action="../member/withdraw.do" >
+         <div class="form-group" align="right" >
+         	 <button type="button" class="btn btn-warning"  id="sorry" >회원 탈퇴(공사중)</button>
+         </div>
+        
+</form>
+</div>
+   </div>
+   
+   <!--   action 속성을 생략하면 같은 uri를 호출한다. 구분하기 위해 꼭 POST방식 전송하자. -->
+   <div class="container" id="viewInfoDiv">
+      <div class="page-header">
+         <h2>My Page</h2>
+         <p>안내:나의 회원 정보입니다.</p>
+      </div>
+      <div class="col-md-6 col-md-offset-3">
+
+         <form method="post" id="viewInfo">
+            <div class="form-group">
+               <label for="id">아이디 : </label> ${memberDTO.id }
+            </div>
+
+            <div class="form-group">
+               <label for="name"> 이름 : </label> ${memberDTO.name }
+            </div>
+
+            <div class="form-group">
+               <label for="birth">생년월일 : </label> ${memberDTO.birthDate}
+            </div>
+
+            <div class="form-group">
+               <label for="hp">연락처 : </label> ${memberDTO.mobile }
+            </div>
+
+            <div class="form-group">
+               <label for="email">이메일 : </label> ${memberDTO.email }
+            </div>
+
+            <div class="form-group">
+               <label for="address">주소 : </label> ${memberDTO.address }<br/>
+               <label for="add2"></label> ${memberDTO.add2 }
+            </div>
+
+            
+
+            <div class="form-group text-center">
+               <button type="button" class="btn btn-info" id="goUpdateBtn">
+                  회원정보 수정<i class="fa fa-check spaceLeft"></i>
+               </button>
+               <button type="button" class="btn"
+                  onclick="history.back(-1)">
+                  돌아가기<i class="fa fa-times spaceLeft"></i>
+               </button>
+            </div>
          </form>
       </div>
    </div>

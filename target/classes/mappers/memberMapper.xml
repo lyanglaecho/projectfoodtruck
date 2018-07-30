@@ -25,6 +25,13 @@
 		from memberboard where id = #{id}
 	</select>
 	
+	<!-- 회원 수정 하기 : update -->
+	<select id="update" resultType="memberDTO">
+		update memberboard 
+		set name=#{name}, birthDate=#{birthDate}, mobile=#{mobile}, address=#{address}, add2=#{add2}, idupdate=sysdate
+		WHERE id = #{id}
+	</select>
+	
 	
 	
 	

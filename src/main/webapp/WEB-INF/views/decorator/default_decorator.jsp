@@ -195,7 +195,7 @@ font-weight: bolder;
 					    <c:if test="${ !empty login }">
 						   <li><a href="${absUri }/member/logout.do">
 						   <span class="glyphicon glyphicon-log-out"> </span> 로그아웃</a></li>
-						   <li><a href="${absUri }/member/view.do">
+						   <li><a href="${absUri }/member/view.do?id=${id }">
 						   <span class="glyphicon glyphicon-user"> </span> 회원정보</a></li>
       					</c:if>
 

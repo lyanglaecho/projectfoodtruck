@@ -1,10 +1,10 @@
 package com.foodtruck.member.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,7 +41,10 @@ public class MemberController {
 		}
 		// 아이디와 비밀번호가 맞는 경우
 		session.setAttribute("login", memberDTO); // 로그인 처리 -> 세션에 값을 넣는다.
-		return "redirect:/main/main.do";
+		session.setAttribute("id", memberDTO.getId());
+		session.setAttribute("name", memberDTO.getName());
+		session.setAttribute("gradeno", memberDTO.getGradeno());
+		return "redirect:/main/main.do?id="+id;
 	}
 	
 	// 4. 회원가입 폼
@@ -62,20 +65,24 @@ public class MemberController {
 	
 	// 6. 회원정보 보기 폼
 	@RequestMapping(value="/view.do", method=RequestMethod.GET)
-	public String view(HttpSession session, String id, MemberDTO memberDTO) {
+	public String view(HttpSession session , String id) {
 		System.out.println(getClass().getSimpleName()+".view():GET");
-		System.out.println(id);
-		System.out.println(session.getAttribute(id));
-		session.setAttribute("id", service.view(id));
+		System.out.println("아이디" + id);
+//		System.out.println(session.getAttribute(id));
+		session.setAttribute("memberDTO", service.view(id));
 		
-		return "/member/view.do";
+		return "/member/view";
 		
 	}
 	
 	// 7. 회원정보 수정 처리
-	@RequestMapping(value="/view.do", method=RequestMethod.POST)
-	public String update() {
-		return null;
+	@RequestMapping(value="/update.do", method=RequestMethod.POST)
+	public String update(MemberDTO memberDTO, String id, HttpServletRequest request) {
+		System.out.println(getClass().getSimpleName()+".update():POST");
+		System.out.println("회원정보수정:아이디"+id);
+		System.out.println(memberDTO);
+		service.update(memberDTO);
+		return "redirect:/member/view.do?id="+id;
 		
 	}
 	

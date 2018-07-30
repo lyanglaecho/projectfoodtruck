@@ -24,7 +24,14 @@ public class MemberService {
 
 	public MemberDTO view(String id) {
 		System.out.println(getClass().getSimpleName()+".view()");
-		return (MemberDTO) dao.view(id);
+		return dao.view(id);
 	}
+
+	public void update(MemberDTO memberDTO) {
+		System.out.println(getClass().getSimpleName()+".update()");
+		dao.update(memberDTO);
+	}
+
+	
 
 }

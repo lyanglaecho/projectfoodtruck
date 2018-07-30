@@ -34,4 +34,9 @@ public class MemberDAO {
 		System.out.println(getClass().getSimpleName()+".view()");
 		return sqlsession.selectOne(namespace+"view", id);
 	}
+
+	public void update(MemberDTO memberDTO) {
+		System.out.println(getClass().getSimpleName()+".update()");
+		sqlsession.update(namespace+"update", memberDTO);
+	}
 }
