@@ -86,4 +86,11 @@ public class MemberController {
 		
 	}
 	
+	// 8. 비밀번호 변경 폼
+	@RequestMapping(value="/changepw.do", method=RequestMethod.GET)
+	public String changPW() {
+		System.out.println(getClass().getSimpleName()+".delete():GET");
+		return "/member/changepw";
+	}
+	
 }
