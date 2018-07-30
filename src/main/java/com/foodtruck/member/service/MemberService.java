@@ -17,4 +17,9 @@ public class MemberService {
 		return dao.login(id, pw);
 	}
 
+	public void join(MemberDTO memberdto) {
+		System.out.println(getClass().getSimpleName()+".join()");
+		dao.join(memberdto);
+	}
+
 }

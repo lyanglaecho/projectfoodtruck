@@ -11,6 +11,15 @@
 		where id=#{id} and pw=#{pw}
 	</select>
 	
+	<!-- 회원가입 : join -->
+	<select id="insert" resultType="memberDTO">
+		insert into MEMBERBOARD
+		(id, pw, name, birthDate, gender, mobile, address, add2, regdate, idupdate, gradeno, email)
+		VALUES(#{id}, #{pw}, #{name}, TO_DATE(#{birthDate}, 'yyyy-MM-dd'), #{gender}, #{mobile},
+		#{address}, #{add2},  sysdate, sysdate, 1, #{email})
+	</select>
+	
+	
 	
 	
 </mapper>

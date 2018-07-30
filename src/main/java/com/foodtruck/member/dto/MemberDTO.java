@@ -19,9 +19,17 @@ public class MemberDTO {
 	
 	public MemberDTO() {}
 
-// 회원가입 
+		
+	// 로그인
+	public MemberDTO(String id, String pw) {
+	this.id = id;
+	this.pw = pw;
+}
+	
+	// 회원가입
 	public MemberDTO(String id, String pw, String name, String birthDate, String gender, String mobile, String email,
-			String address, String add2, Date regDate, Date idupdate, int gradeno) {
+			String address, String add2) {
+		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -31,19 +39,9 @@ public class MemberDTO {
 		this.email = email;
 		this.address = address;
 		this.add2 = add2;
-		this.regDate = regDate;
-		this.idupdate = idupdate;
-		this.gradeno = gradeno;
 	}
 	
-	//비밀번호 변경
-	public MemberDTO(String id, String pw) {
-	this.id = id;
-	this.pw = pw;
-}
 	
-	
-
 	public String getId() {
 		return id;
 	}

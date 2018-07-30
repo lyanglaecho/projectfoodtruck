@@ -17,17 +17,20 @@ public class MemberController {
 	@Inject
 	private MemberService service;
 	
+	// 1. 로그아웃
 	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate(); // 세션을 지운다. -> 로그아웃
 		return "redirect:/main/main.do";
 	}
 	
+	// 2. 로그인 폼
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String login() {
 		return "/member/login";
 	}
 	
+	// 3. 로그인 처리
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw) {
 		MemberDTO dto = service.login(id, pw);
@@ -40,10 +43,22 @@ public class MemberController {
 		return "redirect:/main/main.do";
 	}
 	
-	//회원가입
+	// 4. 회원가입 폼
 	@RequestMapping(value="/join.do", method=RequestMethod.GET)
 	public String join() {
 		return "/member/join";
 	}
+	
+	// 5. 회원가입처리
+	@RequestMapping(value="/join.do", method=RequestMethod.POST)
+	public String join(MemberDTO memberdto) {
+		System.out.println(getClass().getSimpleName()+".join():POST");
+		System.out.println(memberdto);
+		service.join(memberdto);
+		
+		return "redirect:/main/main.do";
+	}
+	
+	
 	
 }

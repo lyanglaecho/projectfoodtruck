@@ -24,4 +24,9 @@ public class MemberDAO {
 		map.put("pw", pw);
 		return sqlsession.selectOne(namespace+"login", map);
 	}
+
+	public void join(MemberDTO memberdto) {
+		System.out.println(getClass().getSimpleName()+".join()");
+		sqlsession.insert(namespace+"insert", memberdto);
+	}
 }
