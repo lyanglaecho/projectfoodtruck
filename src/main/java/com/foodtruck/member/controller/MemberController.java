@@ -3,6 +3,7 @@ package com.foodtruck.member.controller;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.basic.BasicTreeUI.CellEditorHandler;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,9 +89,20 @@ public class MemberController {
 	
 	// 8. 비밀번호 변경 폼
 	@RequestMapping(value="/changepw.do", method=RequestMethod.GET)
-	public String changPW() {
+	public String changePW() {
 		System.out.println(getClass().getSimpleName()+".delete():GET");
 		return "/member/changepw";
 	}
+	
+	// 9. 비밀번호 변경하기
+	@RequestMapping(value="/changepw.do", method=RequestMethod.POST)
+	public String changePW(HttpSession session, String id) {
+		System.out.println(getClass().getSimpleName()+".delete():POST");
+		
+		return "redirect:/member/view.do?id="+id;
+	}
+	
+	
+	
 	
 }

@@ -51,15 +51,14 @@ $(document).ready(function(){
         });
 });
            
+// $(document).ready(function() {
+// 	$("#sorry").click(function() {
+// 		alert("공 사 중");
+// 	});
+// });
  
      </script>
-<script>
-$(document).ready(function() {
-	$("#sorry").click(function() {
-		alert("공 사 중");
-	});
-});
-</script>
+
 
 <title>비밀번호 변경</title>
 </head>
@@ -92,8 +91,8 @@ $(document).ready(function() {
        </div>
       
         <div class="form-group text-center">
-         	 <button type="button" class="btn btn-warning"  id="sorry" >비밀번호 변경(공사중)</button>
-<!--               <button type="button" class="btn btn-info" id="change">변경<i class="fa fa-check spaceLeft"></i></button> -->
+<!--          	 <button type="button" class="btn btn-warning"  id="sorry" >비밀번호 변경()</button> -->
+              <button type="submit" class="btn btn-info" id="change">변경<i class="fa fa-check spaceLeft"></i></button>
               <button type="button" class="btn" onclick="history.back(-1)" >취소<i class="fa fa-times spaceLeft"></i></button>
             </div>
        
