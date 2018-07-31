@@ -62,4 +62,10 @@ public class DataController {
 		return "data/timelm";
 	}// end of timelm()
 	
+	//지도
+	@RequestMapping(value = "/data/MapPrint.do", method= RequestMethod.GET) 
+	public String mapPrint() {
+		System.out.println(getClass().getSimpleName()+".mapPrint()");
+		return "data/MapPrint";
+	}
 }

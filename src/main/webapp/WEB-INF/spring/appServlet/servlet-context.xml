@@ -30,6 +30,7 @@
 	<context:component-scan base-package="com.foodtruck.notice" />
 	<context:component-scan base-package="com.foodtruck.main" />
 	<context:component-scan base-package="com.foodtruck.review" />
+	<context:component-scan base-package="com.foodtruck.data" />
 
 	
 	
