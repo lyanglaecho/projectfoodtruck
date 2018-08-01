@@ -143,7 +143,7 @@ font-weight: bolder;
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
 			              <a class="nav-link dropdown-toggle" href="${absUri }/fest/FestMngr/FestList.do" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                	행사일정
+			                	행사일정 Under Construction
 			              </a>
 			                <ul>
 				                <li><a class="dropdown-item" href="${absUri }/fest/FestMngr/FestList.do">행사일정표 </a></li>
@@ -176,8 +176,8 @@ font-weight: bolder;
 			                	데이터 분석
 			              </a>
 			                <ul>
-				                <li><a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">데이터분석자료</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/data/MongodbDataPrint.do">공공데이터</a></li>
+<%-- 				                <li><a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">데이터분석자료</a></li> --%>
+<%-- 				                <li><a class="dropdown-item" href="${absUri }/data/MongodbDataPrint.do">공공데이터</a></li> --%>
 <%-- 				                <li><a class="dropdown-item" href="${absUri }/data/MapPrint.do">푸드트럭 지도</a></li> --%>
 				                <li><a class="dropdown-item" href="${absUri }/resources/html/FoodTruck.html" target="_blank">푸드트럭 지도</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/data/MapPrint.do">푸드트럭 블럭 지도</a></li>
