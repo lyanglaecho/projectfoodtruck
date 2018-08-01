@@ -178,7 +178,8 @@ font-weight: bolder;
 			                <ul>
 				                <li><a class="dropdown-item" href="${absUri }/data/HuffGravityModelPrint.do">데이터분석자료</a></li>
 				                <li><a class="dropdown-item" href="${absUri }/data/MongodbDataPrint.do">공공데이터</a></li>
-				                <li><a class="dropdown-item" href="${absUri }/data/MapPrint.do">푸드트럭 지도</a></li>
+<%-- 				                <li><a class="dropdown-item" href="${absUri }/data/MapPrint.do">푸드트럭 지도</a></li> --%>
+				                <li><a class="dropdown-item" href="${absUri }/resources/html/FoodTruck.html" target="_blank">푸드트럭 지도</a></li>
 				                <%if(gradeno >= 9 ){ %>
 				                	<li><a class="dropdown-item" href="${absUri }/data/admin.do">관리자용 페이지</a></li>
 			              		<%} %>
