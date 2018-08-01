@@ -135,7 +135,7 @@ font-weight: bolder;
 </head>
 <body>
 	<header>
-	   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+	   <nav class="navbar fixed-top navbar-expand-lg  fixed-top">
     	  <div class="container">
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<div class="navbar-header"><a href="${absUri }/main/main.do"
